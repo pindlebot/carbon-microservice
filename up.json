@@ -1,0 +1,11 @@
+{
+  "name": "carbon-microservice",
+  "regions": ["us-east-1"],
+  "lambda": {
+    "memory": 1536
+  },
+  "hooks": {
+    "build": "yarn run build && rm -rf node_modules && yarn install --production",
+    "clean": "yarn install && yarn clean"
+  }
+}
