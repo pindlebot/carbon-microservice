@@ -14,7 +14,7 @@
     "prism-themes": "^1.0.1",
     "prismjs": "^1.15.0",
     "query-string": "^6.1.0",
-    "react": "16.3.*",
+    "react": "~16.4.2",
     "react-dom": "^16.4.2",
     "react-spinner": "^0.2.7"
   },
