@@ -1,5 +1,7 @@
 ## carbon-microservice
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/unshift/carbon-microservice.svg)](https://greenkeeper.io/)
+
 ![https://raw.githubusercontent.com/unshift/carbon-microservice/master/out.png](https://raw.githubusercontent.com/unshift/carbon-microservice/master/out.png)
 
 ```bash
