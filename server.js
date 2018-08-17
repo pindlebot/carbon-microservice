@@ -121,8 +121,14 @@ const bodyParser = (req) => {
 
 let chrome
 
+const BASE_64_RE = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/
+
 const handler = async (req, res, next) => {
   let query = parse(req.url.slice(1)) || {}
+  if (query.code) {
+    // query.code = Buffer.from(decodeURIComponent(query.code), 'base64').toString()
+  }
+
   if (req.method === 'POST') {
     if (!chrome) {
       chrome = await launchChrome({

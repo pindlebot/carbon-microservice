@@ -1,7 +1,7 @@
 {
   "main": "dist/app.js",
   "scripts": {
-    "dev": "parcel src/app",
+    "dev": "parcel ./server.js --target node --out-file app.js",
     "build": "parcel build ./server.js --target node --no-minify --out-file app.js",
     "start": "node dist/app.js",
     "clean": "rm -rf dist && rm -rf .cache"
@@ -11,6 +11,7 @@
     "babel-runtime": "^6.26.0",
     "chrome-remote-interface": "^0.26.1",
     "highlight.js": "^9.12.0",
+    "prismjs": "^1.15.0",
     "query-string": "^6.1.0",
     "react": "16.3.*",
     "react-dom": "^16.4.2",

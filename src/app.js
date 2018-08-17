@@ -2,22 +2,23 @@ import React from 'react'
 import { Controls } from './components/Controls'
 import * as hljs from 'highlight.js'
 import { DEFAULT_CODE } from './constants'
+import Prism from 'prismjs'
 
 const Terminal = (props) => (
-  <div className={'terminal'}>
+  <pre className={`terminal language-${props.language}`}>
     <div className={'terminal-header'}>
       <Controls />
     </div>
     <div className={'terminal-content'}>
-      {props.codeLines.map((line, i) => <pre
+      {props.codeLines.map((line, i) => <code
         key={`code_${i}`}
         dangerouslySetInnerHTML={{
-          __html: hljs.highlight(props.language, line).value
+          __html: Prism.highlight(line, Prism.languages[props.language])
         }}
       />
       )}
     </div>
-  </div>
+  </pre>
 )
 
 const Boundary = ({ children }) => (
@@ -32,7 +33,9 @@ const Wrapper = ({ children }) => (
 
 class App extends React.Component {
   render () {
+    console.log(this.props)
     const codeLines = this.props.code.split(/\r?\n/g)
+    console.log({ codeLines })
     const language = hljs.highlightAuto(this.props.code).language || 'js'
     return (
       <Wrapper>
