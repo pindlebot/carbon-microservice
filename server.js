@@ -65,7 +65,6 @@ async function screenshot (client, selector, options = {}) {
   }
   if (selector) {
     const model = await getBoxModel(client, selector)
-    console.log({ model })
     captureScreenshotOptions.clip = boxModelToViewPort(model, 3)
   }
 

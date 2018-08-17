@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import fs from 'fs'
-import { DEFAULT_BG_COLOR, COLORS } from './constants'
+import { DEFAULT_BG_COLOR, COLORS, PRISM_THEMES } from './constants'
 import fonts from './assets/fonts'
 
 const Head = props => (
@@ -47,13 +47,13 @@ class Document extends React.Component {
       fontSize,
       lineHeight
     } = this.props
-    console.log(this.props)
     const data = 'window.__DATA__ = ' + JSON.stringify({ props })
     let themeStyles = ''
     if (cache.has(theme)) {
       themeStyles = cache.get(theme)
     } else {
-      themeStyles = fs.readFileSync(`node_modules/prismjs/themes/prism-${theme}.css`, { encoding: 'utf8' })
+      let pkg = PRISM_THEMES.includes(theme) ? 'prism-themes' : 'prismjs'
+      themeStyles = fs.readFileSync(`node_modules/${pkg}/themes/prism-${theme}.css`, { encoding: 'utf8' })
       cache.set(theme, themeStyles)
     }
     return (
@@ -133,7 +133,7 @@ class Document extends React.Component {
 
 Document.defaultProps = {
   title: 'Untitled',
-  theme: 'tomorrow',
+  theme: 'duotone-dark',
   fontFamily: 'Hack',
   fontSize: '14px',
   lineHeight: '133%'
